@@ -13,7 +13,7 @@ object T06EjerciciosDataFrames extends App {
 
 
 
-  val celulares = Seq(
+  private val celulares = Seq(
     ("Nokia", "3310", "Android", 0),
     ("Samsung", "Galaxy", "Android", 32),
     ("Apple", "Iphone", "IOS", 64)
@@ -21,7 +21,7 @@ object T06EjerciciosDataFrames extends App {
 
 
   import spark.implicits._
-  val celularDataFrame = celulares.toDF("Fabricante", "Modelo", "Sistema Operativo", "Memoria")
+  private val celularDataFrame = celulares.toDF("Fabricante", "Modelo", "Sistema Operativo", "Memoria")
 
   celularDataFrame.show()
 
