@@ -1,7 +1,7 @@
 package section2
 
+import org.apache.spark.sql.types._
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.types.{DoubleType, LongType, StringType, StructField, StructType}
 
 object T05DataFrameBasico extends App {
 
@@ -12,7 +12,7 @@ object T05DataFrameBasico extends App {
     .getOrCreate()
 
   // leer dataframe
-  val miframe = spark.read
+  private val miframe = spark.read
     .format("json")
     .option("inferSchema", value = true)
     .load("src/main/resources/data/carros.json")
@@ -35,7 +35,7 @@ object T05DataFrameBasico extends App {
   /**
    * A Spark schema structure that describes a small cars DataFrame.
    */
-  val esquemaCarrosManual = StructType(Array(
+  private val esquemaCarrosManual = StructType(Array(
     StructField("Name", StringType),
     StructField("Miles_per_Gallon", DoubleType),
     StructField("Cylinders", LongType),
@@ -47,7 +47,7 @@ object T05DataFrameBasico extends App {
     StructField("Origin", StringType)
   ))
 
-  val carrosEsquemaInferido = miframe.schema
+  private val carrosEsquemaInferido = miframe.schema
 
   println(carrosEsquemaInferido)
 
@@ -59,7 +59,7 @@ object T05DataFrameBasico extends App {
   /**
    * A "manual" sequence of s describing cars, fetched from cars.json in the data folder.
    */
-  val cars = Seq(
+  private val cars = Seq(
     ("chevrolet chevelle malibu", 18.0, 8L, 307.0, 130L, 3504L, 12.0, "1970-01-01", "USA"),
     ("buick skylark 320", 15.0, 8L, 350.0, 165L, 3693L, 11.5, "1970-01-01", "USA"),
     ("plymouth satellite", 18.0, 8L, 318.0, 150L, 3436L, 11.0, "1970-01-01", "USA"),
@@ -75,11 +75,11 @@ object T05DataFrameBasico extends App {
 
   val miRow: Row = Row("amc ambassador dpl", 15.0, 8L, 390.0, 190L, 3850L, 8.5, "1970-01-01", "USA")
 
-  val carrosManuales = spark.createDataFrame(cars)
+  private val carrosManuales = spark.createDataFrame(cars)
 
   import spark.implicits._
 
-  val carrosmanualesConImplicit = cars.toDF("Name", "kilometro x litros", "cilindros", "Motor", "Caballos", "Peso", "Aceleracion", "fecha", "Pais")
+  private val carrosmanualesConImplicit = cars.toDF("Name", "kilometro x litros", "cilindros", "Motor", "Caballos", "Peso", "Aceleracion", "fecha", "Pais")
 
   carrosManuales.printSchema()
   carrosmanualesConImplicit.printSchema()
