@@ -9,7 +9,7 @@ lazy val root = (project in file("."))
 
 val sparkVersion = "3.4.0"
 val postgresVersion = "42.6.0"
-val log4jVersion = "2.2.0"
+val log4jVersion = "2.20.0"
 
 resolvers ++= Seq(
   "bintray-spark-packages" at "https://dl.bintray.com/spark-packages/maven",

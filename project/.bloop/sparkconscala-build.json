@@ -199,7 +199,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "C:\\Program Files\\Zulu\\zulu-17",
+                "home": "C:\\Users\\jm.fernandez\\.jdks\\azul-17.0.7",
                 "options": [
                     "-Duser.dir=C:\\Users\\jm.fernandez\\Dev\\test\\SparkConScala\\project"
                 ]

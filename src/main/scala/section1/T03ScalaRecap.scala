@@ -2,6 +2,7 @@ package section1
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.language.implicitConversions
 import scala.util.Success
 
 object T03ScalaRecap extends App {
@@ -17,7 +18,7 @@ object T03ScalaRecap extends App {
   class Perro extends Animal
 
   trait Carnivoro {
-    def comer(animal: Animal)
+    def comer(animal: Animal): Unit
   }
 
   class Croc extends Animal with Carnivoro {
@@ -30,15 +31,15 @@ object T03ScalaRecap extends App {
 
   trait MiLista[A]
 
-  val incrementar: (Int) => Int = zx => zx + 1
+  private val incrementar: Int => Int = zx => zx + 1
 
   val x = incrementar(233)
 
   val lista = List(1, 2, 3).map(incrementar)
 
-  val desco: Any = 243
+  private val desco: Any = 243
 
-  val description = desco match {
+  val description: Unit = desco match {
     case 243 => println("he")
     case _ => println("no se ")
   }
@@ -50,7 +51,7 @@ object T03ScalaRecap extends App {
     case _ => println(" otor")
   }
 
-  val fx = Future {
+  private val fx = Future {
     42
   }
 
@@ -71,11 +72,11 @@ object T03ScalaRecap extends App {
       999
   }
 
-  def metodoImplicitod(implicit x: Int)  = x + 42
+  private def metodoImplicitod(implicit x: Int)  = x + 42
 
   implicit val implicita: Int = 2
 
-  val implicitcall = metodoImplicitod
+  private val implicitcall = metodoImplicitod
 
   println(implicitcall)
 
