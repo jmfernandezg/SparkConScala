@@ -9,7 +9,7 @@ object T03ScalaRecap extends App {
 
   val boolean = false
 
-  val unidad: Unit = println("CACA")
+  val unidad: Unit = println("...")
 
   //unidad
 
@@ -47,8 +47,8 @@ object T03ScalaRecap extends App {
   try {
     throw new NullPointerException("MAL !")
   } catch {
-    case e: NullPointerException => println(" NPE!")
-    case _ => println(" otor")
+    case _: NullPointerException => println(" NPE!")
+    case _ => println(" motor")
   }
 
   private val fx = Future {
@@ -64,7 +64,7 @@ object T03ScalaRecap extends App {
   /// funciones parciales
 
   val parcial: PartialFunction[Int, Int] = {
-    case 1 => println("UNIO")
+    case 1 => println("UNIT")
       1
     case 2 => println("DOS")
       2
@@ -72,11 +72,11 @@ object T03ScalaRecap extends App {
       999
   }
 
-  private def metodoImplicitod(implicit x: Int)  = x + 42
+  private def metodoImplicito(implicit x: Int)  = x + 42
 
   implicit val implicita: Int = 2
 
-  private val implicitcall = metodoImplicitod
+  private val implicitcall = metodoImplicito
 
   println(implicitcall)
 

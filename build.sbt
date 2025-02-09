@@ -1,15 +1,15 @@
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
-ThisBuild / scalaVersion := "2.13.10"
+ThisBuild / scalaVersion := "2.12.18"
 
 lazy val root = (project in file("."))
   .settings(
     name := "Scala"
   )
 
-val sparkVersion = "3.4.0"
-val postgresVersion = "42.6.0"
-val log4jVersion = "2.20.0"
+val sparkVersion = "3.5.4"
+val postgresVersion = "42.7.5"
+val log4jVersion = "2.24.3"
 
 resolvers ++= Seq(
   "bintray-spark-packages" at "https://dl.bintray.com/spark-packages/maven",
@@ -17,8 +17,7 @@ resolvers ++= Seq(
   "MavenRepository" at "https://mvnrepository.com"
 )
 
-
-libraryDependencies ++= Seq(
+libraryDependencies ++= Seq(l
   "org.apache.spark" %% "spark-core" % sparkVersion,
   "org.apache.spark" %% "spark-sql" % sparkVersion,
   "org.apache.logging.log4j" % "log4j-api" % log4jVersion,

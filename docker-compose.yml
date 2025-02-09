@@ -1,0 +1,28 @@
+version: '3'
+services:
+  spark-master:
+    image: bitnami/spark:latest
+    container_name: spark-master
+    hostname: spark-master
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - "8080:8080"  # Interfaz web del master
+      - "7077:7077"  # Puerto del cluster Spark
+    networks:
+      - spark-net
+
+  spark-worker:
+    image: bitnami/spark:latest
+    container_name: spark-worker
+    hostname: spark-worker
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    depends_on:
+      - spark-master
+    networks:
+      - spark-net
+
+networks:
+  spark-net:
